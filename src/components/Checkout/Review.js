@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
+import {UserContext} from '../../context/userContext';
 
 const products = [
   { name: 'Product 1', desc: 'A nice thing', price: '$9.99' },
@@ -35,17 +36,33 @@ const useStyles = makeStyles(theme => ({
 
 export default function Review() {
   const classes = useStyles();
+  const {cart, productItems} = useContext(UserContext);
+  const usersCart = cart.reduce((all, item) => {
+    debugger;
+    let product = productItems.filter(pitem => pitem.id === item.productid);
 
+    if (product.length) {
+      product.map(ptitem => {
+        all.push({...ptitem, carduid : item.id, units: item.units})
+        return;
+      })
+      
+    }
+
+    return all;
+  }, [])
+
+  console.log('new cart', usersCart)
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
       <List disablePadding>
-        {products.map(product => (
-          <ListItem className={classes.listItem} key={product.name}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
+        {usersCart.map(item => (
+          <ListItem className={classes.listItem} key={item.carduid}>
+            <ListItemText primary={`${item.name} ( ${item.units} )`} secondary={item.description} />
+            <Typography variant="body2">{item.price}</Typography>
           </ListItem>
         ))}
         <ListItem className={classes.listItem}>

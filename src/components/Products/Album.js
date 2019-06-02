@@ -1,33 +1,21 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
+import React, {useContext} from 'react';
+
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
+
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
+
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
+
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
-import products from '../../services/mocks/products.json';
-import categories from '../../services/mocks/categories.json'
-import Img from '../../assets/app/cake.jpg'
 
-function MadeWithLove() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Built with love by the '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Material-UI
-      </Link>
-      {' team.'}
-    </Typography>
-  );
-}
+import Img from '../../assets/app/cake.jpg'
+import {UserContext} from '../../context/userContext';
+
 const useStyles = makeStyles(theme => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -60,22 +48,53 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Album() {
+
+export default function Album({products, categories}) {
+  console.table(products, ['name', 'quantity'])
   const classes = useStyles();
+  const {cart, addToCart, productItems, setProductItems} = useContext(UserContext);
 
+  const categoryNames = categories.reduce((all, item) => {
+    all[item.id] = item.name;
+    return all;
+  }, {})
+  const handleaddToCart = (productId) => {
+    debugger;
+    console.log('Adding to Cart...', productId);
+    let productInCart = cart.find(item => item.productid === productId),
+        newCart;
+    if (productInCart) {
+      console.log('Product already exists in cart')
+      newCart = cart.map(item => {
+        if (item.productid === productId) {
+            item.units+=1;
+        }
+        return item;
+      })
+    }
+    else {
+      newCart = cart.concat([{id : Date.now(), productid : productId, units : 1}])
+    }
+    
+    addToCart(newCart);
+
+
+    // let selectedProduct = productItems.filter(item => item.id === productId);
+    // selectedProduct.quantity-=1;
+    let modifiedProductItems = productItems.map(item => {
+      if (item.id === productId) {
+        item.quantity-=1;
+      }
+      return item;
+    })
+    setProductItems(modifiedProductItems)
+  }
   return (
     <React.Fragment>     
-      <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            React Comm
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      
+      
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -88,7 +107,7 @@ export default function Album() {
 footwear, women’s casualwear, men’s casualwear, women’s formalwear and
 man’s formalwear.
             </Typography>
-            <div className={classes.heroButtons}>
+            {/* <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
                   <Button variant="contained" color="primary">
@@ -101,14 +120,14 @@ man’s formalwear.
                   </Button>
                 </Grid>
               </Grid>
-            </div>
+            </div> */}
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
             {products.map(product => (
-              <Grid item key={product.id} xs={12} sm={6} md={4}>
+              <Grid item key={product.id} xs={12} sm={6} md={4} style={(product.quantity === 0)?{opacity:'0.5'}:null}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
@@ -120,7 +139,7 @@ man’s formalwear.
                       {product.name} <br />({product.quantity} available)
                     </Typography>
                     <Typography color="textSecondary" variant="subtitle1" >
-                      [ {product.category} ]
+                      [ {categoryNames[product.category]} ]
                     </Typography>
                     <Typography color="textSecondary" variant="caption" >
                       {product.description}
@@ -128,9 +147,12 @@ man’s formalwear.
                    
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      Add to Cart
-                    </Button>
+                    {product.quantity?
+                      <Button size="small" color="primary" onClick={() => handleaddToCart(product.id)}>
+                        Add to Cart
+                      </Button>
+                      :null
+                    }                    
                     <Button size="small" color="primary">
                       View
                     </Button>
@@ -141,17 +163,7 @@ man’s formalwear.
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-        <MadeWithLove />
-      </footer>
-      {/* End footer */}
+      
     </React.Fragment>
   );
 }
