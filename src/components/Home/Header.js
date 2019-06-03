@@ -139,12 +139,12 @@ function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton color="inherit">
+        <IconButton color="inherit" onClick={() => handleMenuClick('Cart')}>
           <Badge badgeContent={4} color="secondary">
             <MailIcon />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>Cart</p>
       </MenuItem>
       <MenuItem>
         <IconButton color="inherit">

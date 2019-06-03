@@ -3,7 +3,7 @@
         "id" : "1",
         "name" : "Almond Toe Court Shoes, Patent Black", 
         "description" : "Almond Toe Court Shoes, Patent Black & Almond Toe Court Shoes, Patent Black",
-        "image" : "cake.jpg",
+        "image" : "../../assets/app/cake.jpg",
         "category" : "1",
         "price" : 99.00,
         "quantity" : 5
@@ -12,7 +12,7 @@
         "id" : "2",
         "name" : "Suede Shoes, Blue",
         "description" : "Suede Shoes, Blue & Suede Shoes, Blue", 
-        "image" : "cake.jpg",
+        "image" : "shoes2.jpg",
         "category" : "1",
         "price" : 42.00 ,
         "quantity" : 4
@@ -21,7 +21,7 @@
         "id" : "3",
         "name" : "Leather Driver Saddle Loafers, Tan", 
         "description" : "Leather Driver Saddle Loafers, Tan & Leather Driver Saddle Loafers, Tan", 
-        "image" : "cake.jpg",
+        "image" : "loafers1.jpg",
         "category" : "2",
         "price" : 34.00,
         "quantity" : 12
@@ -30,7 +30,7 @@
         "id" : "4",
         "name" : "Flip Flops, Red", 
         "description" : "Flip Flops, Red & Flip Flops, Red", 
-        "image" : "cake.jpg",
+        "image" : "flip-flop1.jpg",
         "category" : "2",
         "price" : 19.00,
         "quantity" : 6
@@ -39,7 +39,7 @@
         "id" : "5",
         "name" : "Flip Flops, Blue", 
         "description" : "Flip Flops, Blue & Flip Flops, Blue", 
-        "image" : "cake.jpg",
+        "image" : "flip-flop2.jpg",
         "category" : "2",
         "price" : 19,
         "quantity" : 0
@@ -48,7 +48,7 @@
         "id" : "6",
         "name" : "Gold Button Cardigan, Black", 
         "description" : "Gold Button Cardigan, Black & Gold Button Cardigan, Black", 
-        "image" : "cake.jpg",
+        "image" : "casual1.jpg",
         "category" : "3",
         "price" : 167.00,
         "quantity" : 6
@@ -57,7 +57,7 @@
         "id" : "7",
         "name" : "Cotton Shorts, Medium Red",
         "description" : "Cotton Shorts, Medium Red & Cotton Shorts, Medium Red", 
-        "image" : "cake.jpg", 
+        "image" : "cotton.jpg", 
         "category" : "3",
         "price" : 30.00,
         "quantity" : 5
@@ -66,7 +66,7 @@
         "id" : "8",
         "name" : "Fine Stripe Short Sleeve Shirt, Grey", 
         "description" : "Fine Stripe Short Sleeve Shirt, Grey & Fine Stripe Short Sleeve Shirt, Grey", 
-        "image" : "cake.jpg",
+        "image" : "stripe.jpg",
         "category" : "4",
         "price" : 49.99,
         "quantity" : 9
@@ -75,7 +75,7 @@
         "id" : "9",
         "name" : "Fine Stripe Short Sleeve Shirt, Green", 
         "description" : "Fine Stripe Short Sleeve Shirt, Green & Fine Stripe Short Sleeve Shirt, Green", 
-        "image" : "cake.jpg",
+        "image" : "stripe-green.jpg",
         "category" : "4",
         "price" : 39.99,
         "quantity" : 3
@@ -84,7 +84,7 @@
         "id" : "10",
         "name" : "Sharkskin Waistcoat, Charcoal", 
         "description" : "Sharkskin Waistcoat, Charcoal & Sharkskin Waistcoat, Charcoal", 
-        "image" : "cake.jpg",
+        "image" : "waste.jpg",
         "category" : "6",
         "price" : 75.00,
         "quantity" : 2
@@ -93,7 +93,7 @@
         "id" : "11",
         "name" : "Lightweight Patch Pocket Blazer, Deer", 
         "description" : "Lightweight Patch Pocket Blazer, Deer & Lightweight Patch Pocket Blazer, Deer", 
-        "image" : "cake.jpg",
+        "image" : "patch.jpg",
         "category" : "6",
         "price" : 175.50,
         "quantity" : 1
@@ -102,7 +102,7 @@
         "id" : "12",
         "name" : "Bird Print Dress, Black", 
         "description" : "Bird Print Dress, Black & Bird Print Dress, Black", 
-        "image" : "cake.jpg",
+        "image" : "nike.jpg",
         "category" : "5",
         "price" : 270.00,
         "quantity" : 10
@@ -111,7 +111,7 @@
         "id" : "13",
         "name" : "Mid Twist Cut-Out Dress, Pink",
         "description" : "Mid Twist Cut-Out Dress, Pink & Mid Twist Cut-Out Dress, Pink", 
-        "image" : "cake.jpg", 
+        "image" : "nakd.jpg", 
         "category" : "5",
         "price" : 540.00,
         "quantity" : 5

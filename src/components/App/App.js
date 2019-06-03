@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import './App.css';
 import Checkout from '../Checkout';
@@ -15,6 +15,16 @@ function App() {
   const [cart, addToCart] = useState([]);
   const [page, setPage] = useState('Products');
   const [productItems, setProductItems] = useState(products)
+
+  // useEffect(() => {
+  //   let modifiedCart = cart.reduce((all, item) => {
+  //     if (item.units > 0) {
+  //       all.push(item)
+  //     }
+  //     return all;
+  //   }, []);
+  //   addToCart(modifiedCart)
+  // }, [cart]);
   
   return (
     <>
