@@ -11,6 +11,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Discount from './Discount';
 import {UserContext} from '../../context/userContext';
 import discounts from '../../services/mocks/discounts.json';
+import ContinueShopping from '../Products/ContinueShopping'
 
 
 const useStyles = makeStyles(theme => ({
@@ -73,6 +74,7 @@ const SelectedProducts = ({usersCart, title}) => {
                 <Typography variant="h6" gutterBottom>
                     {title}
                 </Typography>
+                <ContinueShopping />
                 <List disablePadding>
                     {usersCart.map(item => (
                     <ListItem className={classes.listItem} key={item.carduid}>
@@ -95,13 +97,14 @@ const SelectedProducts = ({usersCart, title}) => {
                     
                     </ListItem>
                     {page !== 'Checkout' && 
-                    <ListItem className={classes.listItem}>
+                    <ListItem className={classes.listItem}>                        
                         <Button variant="contained" color="primary" onClick={() => setPage('Checkout')}>
                             Checkout
                         </Button>
                     </ListItem>
                     }
                 </List>
+                
             </>
         )
     }
