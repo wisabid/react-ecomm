@@ -3,7 +3,8 @@ import React, {useContext, useEffect, useState} from 'react';
 
 import {UserContext} from '../../context/userContext';
 import SelectedProducts from '../Cart/SelectedProducts';
-import ShippingNpayment from './ShippingNpayment'
+import ShippingNpayment from './ShippingNpayment';
+import ContinueShopping from '../Products/ContinueShopping'
 
 const products = [
   { name: 'Product 1', desc: 'A nice thing', price: '$9.99' },
@@ -49,7 +50,10 @@ export default function Review() {
   }
   else {
     return (
-      <h3>No items in Cart</h3>
+      <>
+        <h3>No items in Cart</h3>
+        <ContinueShopping />
+      </>
     )
   }
 }

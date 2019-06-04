@@ -15,6 +15,7 @@ import PaymentForm from './PaymentForm';
 import Review from './Review';
 import {UserContext} from '../../context/userContext';
 import products from '../../services/mocks/products.json';
+import ContinueShopping from '../Products/ContinueShopping'
 
 function MadeWithLove() {
   return (
@@ -127,16 +128,7 @@ export default function Checkout() {
                   Your order number is #2001539. We have emailed your order confirmation, and will
                   send you an update when your order has shipped.
                 </Typography>
-                <div className={classes.buttons}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => setPage('Products')}
-                    className={classes.button}
-                  >
-                    Continue Shopping
-                  </Button>
-                </div>
+                <ContinueShopping />
               </React.Fragment>
             ) : (
               <React.Fragment>
