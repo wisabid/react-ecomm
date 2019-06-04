@@ -17,7 +17,7 @@ const products = [
 
 
 export default function Review() {
-  const {cart, productItems} = useContext(UserContext);
+  const {cart, productItems, page} = useContext(UserContext);
   const [usersCart, setUsersCart] = useState([])
   useEffect(() => {
     const forusersCart = cart.reduce((all, item) => {
@@ -39,11 +39,17 @@ export default function Review() {
   }, [cart])
   
 
-  
-  return (
-    <React.Fragment>
-      <SelectedProducts usersCart={usersCart} title={`Cart`}/>
-      <ShippingNpayment />
-    </React.Fragment>
-  );
+  if (usersCart.length) {
+    return (
+      <React.Fragment>
+        <SelectedProducts usersCart={usersCart} title={page === 'Cart'?`Cart`:null}/>
+        {page !== 'Cart' && <ShippingNpayment />}
+      </React.Fragment>
+    );
+  }
+  else {
+    return (
+      <h3>No items in Cart</h3>
+    )
+  }
 }

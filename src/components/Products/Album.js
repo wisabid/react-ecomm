@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 
 import Button from '@material-ui/core/Button';
 
@@ -12,6 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import DoneIcon from '@material-ui/icons/Done';
 
 import Img from '../../assets/app/cake.jpg'
 import {UserContext} from '../../context/userContext';
@@ -55,6 +56,7 @@ export default function Album({products, categories}) {
   console.table(products, ['name', 'quantity'])
   const classes = useStyles();
   const {cart, addToCart, productItems, setProductItems} = useContext(UserContext);
+  const [done, setDone] = useState([])
 
   const categoryNames = categories.reduce((all, item) => {
     all[item.id] = item.name;
@@ -79,7 +81,7 @@ export default function Album({products, categories}) {
     }
     
     addToCart(newCart);
-
+    
 
     // let selectedProduct = productItems.filter(item => item.id === productId);
     // selectedProduct.quantity-=1;
@@ -91,6 +93,14 @@ export default function Album({products, categories}) {
     })
     setProductItems(modifiedProductItems)
   }
+
+  useEffect(() => {
+    let pids = [];
+    cart.map(item => {
+      pids.push(item.productid);
+    })
+    setDone(pids)
+  }, [cart])
   return (
     <React.Fragment>     
       
@@ -134,10 +144,14 @@ man’s formalwear.
                     image={Img}
                     title="Image title"
                   />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                  <CardContent className={classes.cardContent}> 
+                    <Typography component="h2" variant="h5" color="textPrimary">
+                    £ {product.price}
+                    
+                    </Typography>                   
+                    <Typography gutterBottom variant="h6" component="h2">
                       {product.name} <br />({product.quantity} available)
-                    </Typography>
+                    </Typography>                    
                     <Typography color="textSecondary" variant="subtitle1" >
                       [ {categoryNames[product.category]} ]
                     </Typography>
@@ -156,6 +170,9 @@ man’s formalwear.
                     <Button size="small" color="primary">
                       View
                     </Button>
+                    {done.indexOf(product.id) !== -1 && 
+                    <DoneIcon color="primary" fontSize="large" />
+                    }
                   </CardActions>
                 </Card>
               </Grid>

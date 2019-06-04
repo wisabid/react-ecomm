@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import './App.css';
 import Checkout from '../Checkout';
 import Products from '../Products';
-// import Login from '../Login';
+import Login from '../Login';
 import Cart from '../Cart'
 import Header from '../Home/Header'
 import Footer from '../Home/Footer';
@@ -13,8 +13,19 @@ import categories from '../../services/mocks/categories.json';
 
 function App() {
   const [cart, addToCart] = useState([]);
-  const [page, setPage] = useState('Products');
-  const [productItems, setProductItems] = useState(products)
+  const [page, setPage] = useState('Login');
+  const [productItems, setProductItems] = useState(products);
+  const [total, settotal] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  useEffect(() => {
+    if (page === 'Login') {
+      setProductItems(products);
+      settotal(0);
+      setDiscount(0);
+      addToCart([])
+    }
+  }, [page])
+  
 
   // useEffect(() => {
   //   let modifiedCart = cart.reduce((all, item) => {
@@ -32,18 +43,24 @@ function App() {
       <UserContext.Provider value={{
         cart,
         addToCart,
+        page,
         setPage,
         productItems,
-        setProductItems
+        setProductItems,
+        total,
+        settotal,
+        discount,
+        setDiscount
       }}>
         <div className="App">
             
             <Header />
+            {page === "Login" && <Login />}  
             {page === 'Products' && <Products products={productItems} categories={categories}/>}
             {page === 'Cart' && <Cart />}
             {page === 'Checkout' && <Checkout />}
             <Footer />
-            {/* <Login /> */}  
+           
         </div>
       </UserContext.Provider>
     </>

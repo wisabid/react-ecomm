@@ -2,18 +2,18 @@
     {
         "id" : "1",
         "code" : "DISCOUNT5",
-        "value" : 5
+        "value" : -5.00
     },
     {
         
         "id" : "2",
         "code" : "DISCOUNT10",
-        "value" : 10
+        "value" : -10.00
     },
     {
         
         "id" : "3",
         "code" : "DISCOUNT15",
-        "value" : 15
+        "value" : -15.00
     }
 ]

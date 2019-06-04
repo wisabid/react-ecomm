@@ -30,7 +30,7 @@ const Cart = () => {
     return (
         <main className={classes.layout}>
             <Paper className={classes.paper}>
-            <Review />
+              <Review />
             </Paper>
         </main>
     )

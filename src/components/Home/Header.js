@@ -12,9 +12,13 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/ShoppingCart';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import CameraIcon from '@material-ui/icons/ShopRounded';
 import {UserContext} from '../../context/userContext';
 
 const useStyles = makeStyles(theme => ({
+  icon: {
+    marginRight: theme.spacing(2),
+  },
   grow: {
     flexGrow: 1,
   },
@@ -102,9 +106,14 @@ function PrimarySearchAppBar() {
     setMobileMoreAnchorEl(null);
   }
 
-  function handleMenuClose() {
-    setAnchorEl(null);
-    handleMobileMenuClose();
+  function handleMenuClose(param) {
+    if (param === 'logout') {
+      setPage('Login')
+    }
+    else {
+      setAnchorEl(null);
+      handleMobileMenuClose();
+    }
   }
 
   function handleMobileMenuOpen(event) {
@@ -121,7 +130,7 @@ function PrimarySearchAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <MenuItem onClick={() => handleMenuClose('logout')}>Logout</MenuItem>
     </Menu>
   );
 
@@ -167,6 +176,7 @@ function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="fixed">
         <Toolbar>
+          <CameraIcon className={classes.icon} onClick={() => handleMenuClick('Products')}/>
           <span onClick={() => handleMenuClick('Products')}>
           <Typography className={`${classes.title} App-logo`} variant="h6" noWrap>
             React Comm

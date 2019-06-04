@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {UserContext} from '../../context/userContext';
 
 function MadeWithLove() {
   return (
@@ -52,7 +53,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignIn() {
   const classes = useStyles();
-
+  const {setPage} = useContext(UserContext);
+  const handleSignin = () =>{
+    setPage('Products')
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -91,11 +95,12 @@ export default function SignIn() {
             label="Remember me"
           />
           <Button
-            type="submit"
+            type="button"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSignin}
           >
             Sign In
           </Button>
