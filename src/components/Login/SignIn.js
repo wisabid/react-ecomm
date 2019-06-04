@@ -118,9 +118,9 @@ export default function SignIn() {
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
+      {/* <Box mt={5}>
         <MadeWithLove />
-      </Box>
+      </Box> */}
     </Container>
   );
 }

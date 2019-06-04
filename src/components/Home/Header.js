@@ -82,7 +82,7 @@ const useStyles = makeStyles(theme => ({
 
 function PrimarySearchAppBar() {
   const classes = useStyles();
-  const {cart, setPage} = React.useContext(UserContext);
+  const {cart, setPage, page} = React.useContext(UserContext);
   console.table(cart, ['productid', 'units'])
   const [cartItems, setCartItems] = React.useState(0);
   let totalcartItems = cart.reduce((all, item) => all+=item.units, 0);
@@ -128,8 +128,8 @@ function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      {/* <MenuItem onClick={handleMenuClose}>Profile</MenuItem> */}
+      {/* <MenuItem onClick={handleMenuClose}>My account</MenuItem> */}
       <MenuItem onClick={() => handleMenuClose('logout')}>Logout</MenuItem>
     </Menu>
   );
@@ -149,26 +149,32 @@ function PrimarySearchAppBar() {
     >
       <MenuItem>
         <IconButton color="inherit" onClick={() => handleMenuClick('Cart')}>
-          <Badge badgeContent={4} color="secondary">
+          <Badge badgeContent={cartItems?cartItems:null} color="secondary">
             <MailIcon />
           </Badge>
         </IconButton>
         <p>Cart</p>
       </MenuItem>
       <MenuItem>
+        <IconButton color="inherit" onClick={() => handleMenuClose('logout')}>
+          
+        </IconButton>
+        <p>Logout</p>
+      </MenuItem>
+      {/* <MenuItem>
         <IconButton color="inherit">
           <Badge badgeContent={11} color="secondary">
             <NotificationsIcon />
           </Badge>
         </IconButton>
         <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      </MenuItem> */}
+      {/* <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton color="inherit">
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
-      </MenuItem>
+      </MenuItem> */}
     </Menu>
   );
 
@@ -176,14 +182,16 @@ function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="fixed">
         <Toolbar>
-          <CameraIcon className={classes.icon} onClick={() => handleMenuClick('Products')}/>
-          <span onClick={() => handleMenuClick('Products')}>
+          <CameraIcon className={classes.icon} onClick={() => handleMenuClick('Products')} style={{cursor:'pointer'}}/>
+          <span onClick={() => handleMenuClick('Products')} style={{cursor:'pointer'}}>
           <Typography className={`${classes.title} App-logo`} variant="h6" noWrap>
             React Comm
           </Typography>
           </span>
           
           <div className={classes.grow} />
+          {page !== 'Login' && 
+          <>
           <div className={classes.sectionDesktop}>
             <IconButton color="inherit" onClick={() => handleMenuClick('Cart')}>
               <Badge badgeContent={cartItems?cartItems:null} color="secondary">
@@ -206,10 +214,12 @@ function PrimarySearchAppBar() {
               <MoreIcon />
             </IconButton>
           </div>
+          </>
+          }
         </Toolbar>
       </AppBar>
-      {renderMenu}
-      {renderMobileMenu}
+      {page !== 'Login' && renderMenu}
+      {page !== 'Login' && renderMobileMenu}
     </div>
   );
 }

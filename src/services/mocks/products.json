@@ -3,7 +3,7 @@
         "id" : "1",
         "name" : "Almond Toe Court Shoes, Patent Black", 
         "description" : "Almond Toe Court Shoes, Patent Black & Almond Toe Court Shoes, Patent Black",
-        "image" : "../../assets/app/cake.jpg",
+        "image" : "shoes1.JPG",
         "category" : "1",
         "price" : 99.00,
         "quantity" : 5
@@ -102,7 +102,7 @@
         "id" : "12",
         "name" : "Bird Print Dress, Black", 
         "description" : "Bird Print Dress, Black & Bird Print Dress, Black", 
-        "image" : "nike.jpg",
+        "image" : "nike.jpeg",
         "category" : "5",
         "price" : 270.00,
         "quantity" : 10

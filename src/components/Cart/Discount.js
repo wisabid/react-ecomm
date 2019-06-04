@@ -22,24 +22,38 @@ const useStyles = makeStyles(theme => ({
   }));
   
   
-const Discount = ({discounts}) => {
+const Discount = ({discounts, footwearflag}) => {
     debugger;
     const classes = useStyles();
     const {total, settotal, discount, setDiscount} = useContext(UserContext);
     const [values, setValues] = React.useState({
         // name: 'Cat in the Hat',
         display : discount?false:true,
-        discount :discount
+        discount :discount,
+        helpertext : "Please select your Voucher"
         // age: '',
         // multiline: 'Controlled',
         // currency: 'EUR',
       });
+
+      useEffect(() => {
+        if (!discount) {
+            setValues({ ...values, discount : 0, display : true })
+        }
+      }, [discount])
       
       const handleChange = name => event => {
           console.log('ABID', values);
-          setDiscount(event.target.value)
-          settotal((total+event.target.value))
-          setValues({ ...values, [name]: event.target.value, display : false });
+          let discountVal = event.target.value;
+          if ((discountVal === -5) || (discountVal === -10 && total >= 50) || (discountVal === -15 && total >= 75 && footwearflag)) {
+            setDiscount(discountVal)
+            settotal((total+discountVal))
+            setValues({ ...values, [name]: discountVal, display : false });
+          }
+          else {
+            setValues({ ...values, helpertext : 'Cannot be Applied' })
+          }
+          
       };
       const reset = name => {
           setDiscount(0)
@@ -51,6 +65,7 @@ const Discount = ({discounts}) => {
             <ListItemText primary="Discount" />
             {values.display? 
                 <TextField
+                    error={values.helpertext !== 'Please select your Voucher'?true:false}
                     id="standard-select-discound"
                     select
                     label=""
@@ -62,7 +77,7 @@ const Discount = ({discounts}) => {
                         className: classes.menu,
                     },
                     }}
-                    helperText="Please select your Voucher"
+                    helperText={values.helpertext}
                     margin="normal"
                 >
                     {discounts.map(option => (

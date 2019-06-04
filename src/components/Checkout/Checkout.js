@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
+import {UserContext} from '../../context/userContext';
+import products from '../../services/mocks/products.json';
 
 function MadeWithLove() {
   return (
@@ -81,9 +83,19 @@ function getStepContent(step) {
 export default function Checkout() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
+  const {settotal, addToCart, setProductItems, setDiscount, setPage} = useContext(UserContext);
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
+    setActiveStep(() => {
+      let nextstep = activeStep + 1;
+      if (nextstep === steps.length) {
+        setProductItems(products);
+        settotal(0);
+        setDiscount(0);
+        addToCart([])
+      }
+      return nextstep
+    });
   };
 
   const handleBack = () => {
@@ -115,6 +127,16 @@ export default function Checkout() {
                   Your order number is #2001539. We have emailed your order confirmation, and will
                   send you an update when your order has shipped.
                 </Typography>
+                <div className={classes.buttons}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => setPage('Products')}
+                    className={classes.button}
+                  >
+                    Continue Shopping
+                  </Button>
+                </div>
               </React.Fragment>
             ) : (
               <React.Fragment>
@@ -138,7 +160,7 @@ export default function Checkout() {
             )}
           </React.Fragment>
         </Paper>
-        <MadeWithLove />
+        {/* <MadeWithLove /> */}
       </main>
     </React.Fragment>
   );

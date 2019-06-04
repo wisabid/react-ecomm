@@ -17,6 +17,7 @@ function App() {
   const [productItems, setProductItems] = useState(products);
   const [total, settotal] = useState(0);
   const [discount, setDiscount] = useState(0);
+  const [footCats, setFootCats] = useState([])
   useEffect(() => {
     if (page === 'Login') {
       setProductItems(products);
@@ -24,7 +25,17 @@ function App() {
       setDiscount(0);
       addToCart([])
     }
-  }, [page])
+  }, [page]);
+
+  useEffect(() => {
+    let footCats = [];
+    categories.map(item => {
+      if ((item.name).toLowerCase().search('footwear') !== -1) {
+        footCats.push(item.id);
+      }
+    })
+    setFootCats(footCats);
+  }, [categories])
   
 
   // useEffect(() => {
@@ -50,7 +61,8 @@ function App() {
         total,
         settotal,
         discount,
-        setDiscount
+        setDiscount,
+        footCats
       }}>
         <div className="App">
             
