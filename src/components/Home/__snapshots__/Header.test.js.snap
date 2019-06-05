@@ -4361,7 +4361,7 @@ ReactShallowRenderer {
             noWrap={true}
             variant="h6"
           >
-            React Comm
+            . C o m
           </ForwardRef(WithStyles)>
         </span>
         <div

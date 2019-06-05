@@ -19,5 +19,43 @@ describe('<SelectedProducts />', () => {
 
     it('matches the snapshop', () => {
         expect(renderer).toMatchSnapshot();
-    })
+    });
+
+    it('loads up all selected items in the listing', () => {
+
+    });
+
+    it('Continue shopping and checkout buttons are present when there are items in cart', () => {
+
+    });
+    it('Continue shopping button should be present even if there is no items added to cart', () => {
+
+    });
+    it('displays remove from cart button with each item on cart', () => {
+
+    });
+    it('shows up price of an item multiplied by units', () => {
+
+    });
+    it('shows total price', () => {
+
+    });
+    it('displays discount section', () => {
+
+    });
+    it('removes a single unit of an item when remove icon is clicked', () => {
+
+    });
+    it('displays quantity of an item selected', () => {
+
+    });
+    it('displays Cart title if its Cart screen', () => {
+
+    });
+    it('redirects to homepage on click of Continue shopping button', () => {
+
+    });
+    it('takes to Checkout page when Checkout button is clicked', () => {
+
+    });
 });

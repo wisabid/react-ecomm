@@ -14,6 +14,21 @@ describe('<Cart />', () => {
 
   it('matches the snapshop', () => {
     expect(renderer).toMatchSnapshot();
-  })
+  });
+  it('displays Cart and logout when logged in ', () => {
+
+  });
+  it('does not display cart and logout on login page', () => {
+
+  });
+  it('takes to Cart screen on click of cart', () => {
+
+  });
+  it('takes to login page on click of logout', () => {
+
+  });
+  it('badge number is added to Cart icon when an item is added to cart', () => {
+
+  });
 
 });

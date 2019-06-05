@@ -185,7 +185,7 @@ function PrimarySearchAppBar() {
           <CameraIcon className={classes.icon} onClick={() => handleMenuClick('Products')} style={{cursor:'pointer'}}/>
           <span onClick={() => handleMenuClick('Products')} style={{cursor:'pointer'}}>
           <Typography className={`${classes.title} App-logo`} variant="h6" noWrap>
-            React Comm
+            . C o m
           </Typography>
           </span>
           

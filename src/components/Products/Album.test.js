@@ -15,5 +15,26 @@ describe('<Products />', () => {
 
     it('matches the snapshop', () => {
         expect(renderer).toMatchSnapshot();
-      })
+    })
+    it('display products listing', () => {
+
+    });
+    it('displays Add to cart and view on each item listing', () => {
+
+    });
+    it('does not display Add to cart if 0 available', () => {
+
+    });
+    it('displays a tick when an item is added to cart', () => {
+
+    });
+    it('tick mark is disappeared if the item is removed from cart', () => {
+
+    });
+    it('a unit is decremented from availability when an item is added to cart', () => {
+
+    });
+    it('displays price, category name of an item in the listing', () => {
+
+    });
 });

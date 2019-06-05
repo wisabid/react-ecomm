@@ -1488,6 +1488,16 @@ ReactShallowRenderer {
                 },
               },
             },
+            Object {
+              "create": [Function],
+              "options": Object {
+                "classNamePrefix": "MuiCircularProgress",
+                "index": -999999987,
+                "meta": "MuiCircularProgress",
+                "name": "MuiCircularProgress",
+              },
+              "themingEnabled": true,
+            } => Map {},
           },
           "sheetsRegistry": null,
         },

@@ -45,7 +45,7 @@ const Discount = ({discounts, footwearflag}) => {
       const handleChange = name => event => {
           console.log('ABID', values);
           let discountVal = event.target.value;
-          if ((discountVal === -5) || (discountVal === -10 && total >= 50) || (discountVal === -15 && total >= 75 && footwearflag)) {
+          if ((discountVal === -5 && total >= 5) || (discountVal === -10 && total >= 50) || (discountVal === -15 && total >= 75 && footwearflag)) {
             setDiscount(discountVal)
             settotal((total+discountVal))
             setValues({ ...values, [name]: discountVal, display : false });
