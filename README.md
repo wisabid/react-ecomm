@@ -16,7 +16,7 @@
 ### How to Navigate (user Manual)  
 - Landing page is a sample login page.  
 - Please feel free to skip entering email & password for redirecting to homepage (Products listing page)  
-- Entering email at login screen would persist the login session, so would recommend filling just the email field.  
+- Entering email at login screen would persist (A browser refresh will not log the user out if email is entered) the login session, so would recommend filling just the email field.  
 - Click on Sign in button  
 - Application logo & Title are at the Top Left corner and clicking on those will redirect the user to homepage (Products listing page)  
 - At the top right corner, there are two button actions - Cart & Logout.  
