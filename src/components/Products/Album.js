@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-
+import Zoom from '@material-ui/core/Zoom';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -16,6 +16,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {UserContext} from '../../context/userContext';
+import {getCatNames} from '../../utils';
 
 const useStyles = makeStyles(theme => ({
   progress: {
@@ -65,10 +66,7 @@ function Album({products, categories}) {
   const {cart, addToCart, productItems, setProductItems} = useContext(UserContext);
   const [done, setDone] = useState([])
 
-  const categoryNames = categories.reduce((all, item) => {
-    all[item.id] = item.name;
-    return all;
-  }, {})
+  const categoryNames = getCatNames(categories);
   const handleaddToCart = (productId) => {
     debugger;
     console.log('Adding to Cart...', productId);
@@ -144,6 +142,7 @@ function Album({products, categories}) {
           </div>
           <Container className={classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
+            <Zoom in={true}>
             <Grid container spacing={4}>
               {products.map(product => (
                 <Grid item key={product.id} xs={12} sm={6} md={4} style={(product.quantity === 0)?{opacity:'0.5'}:null}>
@@ -187,6 +186,7 @@ function Album({products, categories}) {
                 </Grid>
               ))}
             </Grid>
+            </Zoom>
           </Container>
         </main>
         

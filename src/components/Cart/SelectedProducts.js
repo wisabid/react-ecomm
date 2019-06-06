@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
+import Zoom from '@material-ui/core/Zoom';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
@@ -12,8 +13,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Discount from './Discount';
 import {UserContext} from '../../context/userContext';
 import discounts from '../../services/mocks/discounts.json';
-import ContinueShopping from '../Products/ContinueShopping'
-
+import ContinueShopping from '../Products/ContinueShopping';
+import categories from '../../services/mocks/categories.json';
+import {getCatNames} from '../../utils';
 
 const useStyles = makeStyles(theme => ({
     progress: {
@@ -32,7 +34,7 @@ const SelectedProducts = ({usersCart, title}) => {
     const {cart, addToCart, productItems, setProductItems, setPage, page, total, settotal, discount, footCats, setDiscount} = useContext(UserContext);
     const [footwearflag, setFootwearflag] = useState(false);
     // const [total, settotal] = useState(0);
-
+    const categoryNames = getCatNames(categories);
     useEffect(() => {
         let newtotal = usersCart.reduce((all, item) => {
             if (footCats.indexOf(item.category) !== -1) {
@@ -76,13 +78,14 @@ const SelectedProducts = ({usersCart, title}) => {
                     {title}
                 </Typography>
                 <ContinueShopping />
+                <Zoom in={true}>
                 <List disablePadding>
                     {usersCart.map(item => (
                     <ListItem className={classes.listItem} key={item.carduid}>
                         <IconButton edge="end" aria-label="Delete" onClick={() => handleDelete(item.id)} style={{marginRight : '10px'}}>
                                 <DeleteIcon />
                         </IconButton>
-                        <ListItemText primary={`${item.name} ( ${item.units} )`} secondary={item.description} />
+                        <ListItemText primary={`${item.name} ( ${item.units} )`} secondary={`[ ${categoryNames[item.category]} ]`} />
                         <Typography variant="body2">£ {(item.units * item.price).toFixed(2)}</Typography>
                         {/* <ListItemSecondaryAction> */}
                             
@@ -105,7 +108,7 @@ const SelectedProducts = ({usersCart, title}) => {
                     </ListItem>
                     }
                 </List>
-                
+                </Zoom>
             </>
         )
     }

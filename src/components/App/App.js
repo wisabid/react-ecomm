@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import CookieConsent from "react-cookie-consent";
 import './App.css';
 import Checkout from '../Checkout';
 import Products from '../Products';
@@ -70,6 +71,9 @@ function App() {
       }}>
         <div className="App">
           <ErrorBoundary>
+            <CookieConsent location="bottom" style={{ background: "#3f51b5",marginBottom:'30px' }} buttonStyle={{borderRadius: '10px'}}>
+              This website uses cookies to enhance the user experience.
+            </CookieConsent>
             <Header />
             {page === "Login" && <Login />}  
             {page === 'Products' && <Products products={productItems} categories={categories}/>}
