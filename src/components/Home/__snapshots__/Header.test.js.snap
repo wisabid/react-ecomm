@@ -4445,10 +4445,11 @@ ReactShallowRenderer {
         }
       }
     >
-      <ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        onClick={[Function]}
+      >
         <ForwardRef(WithStyles)
           color="inherit"
-          onClick={[Function]}
         >
           <ForwardRef(WithStyles)
             badgeContent={null}
@@ -4461,10 +4462,11 @@ ReactShallowRenderer {
           Cart
         </p>
       </ForwardRef(WithStyles)>
-      <ForwardRef(WithStyles)>
+      <ForwardRef(WithStyles)
+        onClick={[Function]}
+      >
         <ForwardRef(WithStyles)
           color="inherit"
-          onClick={[Function]}
         />
         <p>
           Logout

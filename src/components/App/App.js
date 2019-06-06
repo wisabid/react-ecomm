@@ -10,14 +10,16 @@ import Footer from '../Home/Footer';
 import {UserContext} from '../../context/userContext';
 import products from '../../services/mocks/products.json';
 import categories from '../../services/mocks/categories.json';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 function App() {
   const [cart, addToCart] = useState([]);
-  const [page, setPage] = useState('Login');
+  const [page, setPage] = useState(!localStorage.getItem('dotc_email')?'Login':'Products');
   const [productItems, setProductItems] = useState(products);
   const [total, settotal] = useState(0);
   const [discount, setDiscount] = useState(0);
-  const [footCats, setFootCats] = useState([])
+  const [footCats, setFootCats] = useState([]);
+  const [user, setUser] = useState('');
   useEffect(() => {
     if (page === 'Login') {
       setProductItems(products);
@@ -62,17 +64,19 @@ function App() {
         settotal,
         discount,
         setDiscount,
-        footCats
+        footCats,
+        user,
+        setUser
       }}>
         <div className="App">
-            
+          <ErrorBoundary>
             <Header />
             {page === "Login" && <Login />}  
             {page === 'Products' && <Products products={productItems} categories={categories}/>}
             {page === 'Cart' && <Cart />}
             {page === 'Checkout' && <Checkout />}
             <Footer />
-           
+          </ErrorBoundary> 
         </div>
       </UserContext.Provider>
     </>

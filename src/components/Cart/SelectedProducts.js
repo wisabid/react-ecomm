@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -114,5 +115,18 @@ const SelectedProducts = ({usersCart, title}) => {
           )
     }
 }
-
+SelectedProducts.propTypes = {
+    usersCart : PropTypes.arrayOf(PropTypes.shape({
+        id : PropTypes.string,
+        name : PropTypes.string,
+        description : PropTypes.string, 
+        image : PropTypes.string,
+        category : PropTypes.string,
+        price : PropTypes.number ,
+        quantity : PropTypes.number,
+        carduid : PropTypes.number,
+        units : PropTypes.number
+    })),
+    title : PropTypes.string
+  }
 export default SelectedProducts;

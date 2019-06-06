@@ -2015,7 +2015,7 @@ ReactShallowRenderer {
   "_numberOfReRenders": 0,
   "_renderPhaseUpdates": null,
   "_rendered": <ForwardRef(WithStyles)
-    className="makeStyles-listItem-1"
+    className="makeStyles-listItem-1 dotc-discount"
   >
     <ForwardRef(WithStyles)
       primary="Discount"

@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
 import Card from '@material-ui/core/Card';
@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
 // const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 
-export default function Album({products, categories}) {
+function Album({products, categories}) {
   console.table(products, ['name', 'quantity'])
   const classes = useStyles();
   const {cart, addToCart, productItems, setProductItems} = useContext(UserContext);
@@ -199,3 +199,20 @@ else {
   )
 }
 }
+
+Album.propTypes = {
+  products : PropTypes.arrayOf(PropTypes.shape({
+      id : PropTypes.string,
+      name : PropTypes.string,
+      description : PropTypes.string, 
+      image : PropTypes.string,
+      category : PropTypes.string,
+      price : PropTypes.number ,
+      quantity : PropTypes.number
+  })),
+  categories : PropTypes.arrayOf(PropTypes.shape({
+    id : PropTypes.string,
+    name : PropTypes.string 
+  }))
+}
+export default Album;

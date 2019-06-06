@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -53,10 +53,22 @@ const useStyles = makeStyles(theme => ({
 
 export default function SignIn() {
   const classes = useStyles();
-  const {setPage} = useContext(UserContext);
+  const {setPage, setUser} = useContext(UserContext);
+  const [useremail, setUseremail] = useState('');
+  const handleOnchange = (event) => {
+    if (event.target.id === 'email') {
+      setUseremail(event.target.value)
+    }
+  }
   const handleSignin = () =>{
+    localStorage.setItem('dotc_email', useremail);
     setPage('Products')
   }
+  useEffect(() => {
+    if (localStorage.getItem('dotc_email')) {
+      setUseremail(localStorage.getItem('dotc_email'));
+    }
+  }, [])
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -78,6 +90,8 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={useremail}
+            onChange={handleOnchange}
           />
           <TextField
             variant="outlined"

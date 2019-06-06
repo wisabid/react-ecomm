@@ -108,6 +108,7 @@ function PrimarySearchAppBar() {
 
   function handleMenuClose(param) {
     if (param === 'logout') {
+      localStorage.removeItem('dotc_email')
       setPage('Login')
     }
     else {
@@ -147,16 +148,16 @@ function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton color="inherit" onClick={() => handleMenuClick('Cart')}>
+      <MenuItem onClick={() => handleMenuClick('Cart')}>
+        <IconButton color="inherit">
           <Badge badgeContent={cartItems?cartItems:null} color="secondary">
             <MailIcon />
           </Badge>
         </IconButton>
         <p>Cart</p>
       </MenuItem>
-      <MenuItem>
-        <IconButton color="inherit" onClick={() => handleMenuClose('logout')}>
+      <MenuItem onClick={() => handleMenuClose('logout')}>
+        <IconButton color="inherit">
           
         </IconButton>
         <p>Logout</p>

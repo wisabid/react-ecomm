@@ -61,7 +61,7 @@ const Discount = ({discounts, footwearflag}) => {
           setValues({ ...values, [name]: '', display : true });
       }
     return (
-        <ListItem className={classes.listItem}>
+        <ListItem className={`${classes.listItem} dotc-discount`}>
             <ListItemText primary="Discount" />
             {values.display? 
                 <TextField

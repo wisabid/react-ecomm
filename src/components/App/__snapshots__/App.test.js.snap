@@ -148,7 +148,14 @@ ReactShallowRenderer {
             "memoizedState": 0,
             "next": Object {
               "memoizedState": Array [],
-              "next": null,
+              "next": Object {
+                "memoizedState": "",
+                "next": null,
+                "queue": Object {
+                  "dispatch": [Function],
+                  "first": null,
+                },
+              },
               "queue": Object {
                 "dispatch": [Function],
                 "first": null,
@@ -317,17 +324,21 @@ ReactShallowRenderer {
           "setDiscount": [Function],
           "setPage": [Function],
           "setProductItems": [Function],
+          "setUser": [Function],
           "settotal": [Function],
           "total": 0,
+          "user": "",
         }
       }
     >
       <div
         className="App"
       >
-        <PrimarySearchAppBar />
-        <SignIn />
-        <Footer />
+        <ErrorBoundary>
+          <PrimarySearchAppBar />
+          <SignIn />
+          <Footer />
+        </ErrorBoundary>
       </div>
     </Context.Provider>
   </React.Fragment>,
