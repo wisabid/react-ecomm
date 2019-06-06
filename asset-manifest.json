@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/react-ecomm/static/css/main.b43861d6.chunk.css",
+    "main.js": "/react-ecomm/static/js/main.3f846036.chunk.js",
+    "main.js.map": "/react-ecomm/static/js/main.3f846036.chunk.js.map",
+    "runtime~main.js": "/react-ecomm/static/js/runtime~main.47b52ead.js",
+    "runtime~main.js.map": "/react-ecomm/static/js/runtime~main.47b52ead.js.map",
+    "static/js/2.5af96586.chunk.js": "/react-ecomm/static/js/2.5af96586.chunk.js",
+    "static/js/2.5af96586.chunk.js.map": "/react-ecomm/static/js/2.5af96586.chunk.js.map",
+    "index.html": "/react-ecomm/index.html",
+    "precache-manifest.52f1f871f4ecf9ff63f532a38f5fdc01.js": "/react-ecomm/precache-manifest.52f1f871f4ecf9ff63f532a38f5fdc01.js",
+    "service-worker.js": "/react-ecomm/service-worker.js",
+    "static/css/main.b43861d6.chunk.css.map": "/react-ecomm/static/css/main.b43861d6.chunk.css.map",
+    "static/media/cake.jpg": "/react-ecomm/static/media/cake.b0cc591a.jpg",
+    "static/media/casual1.jpg": "/react-ecomm/static/media/casual1.dc40b0d5.jpg",
+    "static/media/cotton.jpg": "/react-ecomm/static/media/cotton.f800898f.jpg",
+    "static/media/flip-flop1.jpg": "/react-ecomm/static/media/flip-flop1.1d22027b.jpg",
+    "static/media/loafers1.jpg": "/react-ecomm/static/media/loafers1.8ff1df62.jpg",
+    "static/media/nakd.jpg": "/react-ecomm/static/media/nakd.1df7554f.jpg",
+    "static/media/nike.jpeg": "/react-ecomm/static/media/nike.3b009c36.jpeg",
+    "static/media/patch.jpg": "/react-ecomm/static/media/patch.e5cd63ac.jpg",
+    "static/media/shoes1.JPG": "/react-ecomm/static/media/shoes1.6e07ebe0.JPG",
+    "static/media/shoes2.jpg": "/react-ecomm/static/media/shoes2.77f6e519.jpg",
+    "static/media/stripe-green.jpg": "/react-ecomm/static/media/stripe-green.0ccafd9e.jpg",
+    "static/media/stripe.jpg": "/react-ecomm/static/media/stripe.ce46daaa.jpg",
+    "static/media/waste.jpg": "/react-ecomm/static/media/waste.b104298a.jpg"
+  }
+}
