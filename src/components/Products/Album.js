@@ -175,9 +175,9 @@ function Album({products, categories}) {
                         </Button>
                         :null
                       }                    
-                      <Button size="small" color="primary">
+                      {/* <Button size="small" color="primary">
                         View
-                      </Button>
+                      </Button> */}
                       {done.indexOf(product.id) !== -1 && 
                       <DoneIcon color="primary" fontSize="large" />
                       }
